@@ -1,0 +1,6 @@
+[submodule "spdlog"]
+	path = spdlog
+	url = https://github.com/gabime/spdlog
+[submodule "Skull/vendor/spdlog"]
+	path = Skull/vendor/spdlog
+	url = https://github.com/gabime/spdlog

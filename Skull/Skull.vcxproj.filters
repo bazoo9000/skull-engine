@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Skull">
+      <UniqueIdentifier>{909E190E-FCB2-41BF-C534-E51E31083EF0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Skull.h" />
+    <ClInclude Include="src\Skull\Application.h">
+      <Filter>Skull</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Skull\Core.h">
+      <Filter>Skull</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Skull\EntryPoint.h">
+      <Filter>Skull</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Skull\Log.h">
+      <Filter>Skull</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Skull\Events\ApplicationEvent.h" />
+    <ClInclude Include="src\Skull\Events\Event.h" />
+    <ClInclude Include="src\Skull\Events\KeyEvent.h" />
+    <ClInclude Include="src\Skull\Events\MouseEvent.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Skull\Application.cpp">
+      <Filter>Skull</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Skull\Log.cpp">
+      <Filter>Skull</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
