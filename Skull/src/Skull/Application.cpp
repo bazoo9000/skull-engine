@@ -1,4 +1,8 @@
+#include "skpch.h"
 #include "Application.h"
+
+#include "Skull/Events/ApplicationEvent.h"
+#include "Skull/Log.h"
 
 namespace Skull {
 
@@ -11,6 +15,8 @@ namespace Skull {
 	}
 
 	void Application::Run() {
+		//WindowResizeEvent e(1280, 720);
+
 		while (true);
 	}
 }

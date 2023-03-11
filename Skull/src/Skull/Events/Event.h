@@ -3,9 +3,6 @@
 //#include "Skull/Core.h"
 #include "../Core.h"
 
-#include <string>
-#include <functional>
-
 namespace Skull {
 
 	// momentan, eventurile o sa blocheze aplicatia si o sa fie executate

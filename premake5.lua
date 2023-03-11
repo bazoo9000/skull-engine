@@ -5,7 +5,7 @@ configurations
 {
 	"Debug", -- Pur si simplu debug
 	"Release", -- Un fel de debug dar cu mai putine optiune si optimizat
-	"Dist" -- Un fel de release dar fara optiuni
+	"Dist"  -- Un fel de release dar fara optiuni
 }
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}" -- pentru compatibilitate
@@ -17,6 +17,9 @@ language "C++"
 
 targetdir("bin/" .. outputdir .. "/%{prj.name}") -- target directory
 objdir("bin-int/" .. outputdir .. "/%{prj.name}")
+
+pchheader "skpch.h"             -- echivalent cu: hey VS foloseste pch pls
+pchsource "Skull/src/skpch.cpp" -- probabil ignorat in alte OS-uri si este echivalent cu: hey VS creeaza pch pls
 
 files
 {
@@ -32,7 +35,7 @@ includedirs
 
 filter "system:windows" -- macro-uri pentru OS anume
 cppdialect "C++20"
-staticruntime "On" -- responsabil pentru link-urile statice
+staticruntime "On"      -- responsabil pentru link-urile statice
 systemversion "latest"
 
 defines
@@ -89,7 +92,7 @@ links -- dll
 
 filter "system:windows" -- macro-uri pentru OS anume
 cppdialect "C++20"
-staticruntime "On" -- responsabil pentru link-urile statice
+staticruntime "On"      -- responsabil pentru link-urile statice
 systemversion "latest"
 
 defines
