@@ -10,4 +10,12 @@
 	#error Numai pe windows merge!
 #endif // SK_PLATFORM_WINDOWS
 
+#ifdef SK_ENABLE_ASSERTS // scop? verifica o conditie daca nu a avut loc si va pune un breakpoint in cod si ne duce exact unde este problema
+	#define SK_ASSERT(x, ...) { if(!(x)) { SK_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+	#define SK_CORE_ASSERT(x, ...) { if(!(x)) { SK_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } } 
+#else
+	#define SK_ASSERT(x, ...)
+	#define SK_CORE_ASSERT(x, ...)
+#endif
+
 #define BIT(x) (1 << x)

@@ -10,6 +10,10 @@ configurations
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}" -- pentru compatibilitate
 
+IncludeDir = {}                                                 -- o sa avem mai multe dependecy-uri, asa ca o sa facem o lista pt toate
+IncludeDir["GLFW"] = "Skull/vendor/GLFW/include"
+include "Skull/vendor/GLFW"                                     -- acum includem toate librariile din GLFW
+
 project "Skull"
 location "Skull"
 kind "SharedLib" -- Specifica ca este DLL
@@ -30,7 +34,14 @@ files
 includedirs
 {
 	"%{prj.name}/src",
-	"%{prj.name}/vendor/spdlog/include"
+	"%{prj.name}/vendor/spdlog/include",
+	"%{IncludeDir.GLFW}"
+}
+
+links -- link the shit out of them
+{
+	"GLFW",
+	"opengl32.lib"
 }
 
 filter "system:windows" -- macro-uri pentru OS anume

@@ -7,6 +7,12 @@
     <Filter Include="Skull\Events">
       <UniqueIdentifier>{7448D969-60AB-680E-0931-A1C4F5723491}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Skull\Platform">
+      <UniqueIdentifier>{307562cf-b308-4189-b436-e5ce46dc890c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Skull\Platform\Windows">
+      <UniqueIdentifier>{698ebe61-e179-4899-a0fa-876c1b51fba4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Skull.h" />
@@ -35,6 +41,12 @@
       <Filter>Skull</Filter>
     </ClInclude>
     <ClInclude Include="src\skpch.h" />
+    <ClInclude Include="src\Skull\Platform\Windows\WindowsWindow.h">
+      <Filter>Skull\Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Skull\Window.h">
+      <Filter>Skull</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Skull\Application.cpp">
@@ -44,5 +56,8 @@
       <Filter>Skull</Filter>
     </ClCompile>
     <ClCompile Include="src\skpch.cpp" />
+    <ClCompile Include="src\Skull\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Skull\Platform\Windows</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

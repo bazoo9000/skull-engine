@@ -2,6 +2,7 @@
 
 //#include "Skull/Core.h"
 #include "../Core.h"
+#include "skpch.h"
 
 namespace Skull {
 
