@@ -155,8 +155,8 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Layer.h" />
-    <ClInclude Include="LayerStack.h" />
+    <ClInclude Include="src\Skull\Layer.h" />
+    <ClInclude Include="src\Skull\LayerStack.h" />
     <ClInclude Include="src\Skull.h" />
     <ClInclude Include="src\Skull\Application.h" />
     <ClInclude Include="src\Skull\Core.h" />
@@ -171,8 +171,8 @@
     <ClInclude Include="src\Skull\Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Layer.cpp" />
-    <ClCompile Include="LayerStack.cpp" />
+    <ClCompile Include="src\Skull\Layer.cpp" />
+    <ClCompile Include="src\Skull\LayerStack.cpp" />
     <ClCompile Include="src\Skull\Application.cpp" />
     <ClCompile Include="src\Skull\Log.cpp" />
     <ClCompile Include="src\skpch.cpp">

@@ -30,7 +30,7 @@ namespace Skull {
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose)); // ce se afla in < Aici > este pt T::GetStaticType()
 
-		SK_CORE_TRACE("{0}", e); // DEBUG, sa vedem ce event a avut loc
+		// SK_CORE_TRACE("{0}", e); // DEBUG, sa vedem ce event a avut loc
 
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); ) {
 			(*--it)->OnEvent(e);
