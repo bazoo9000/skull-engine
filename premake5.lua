@@ -60,21 +60,26 @@ postbuildcommands -- ca sa nu mai copiez dll in sandbox
 	("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
 }
 
+-- buildoptions nu era acolo si facea spdlog sa elibereze memorie aiurea, rezultand la crashuri
+-- NOTE: in viitor, daca vreau sa fac dll-uri, ar trebui sa fac buildoptions sa fie cum ii in visual studio la proprietati
 filter "configurations:Debug"
 defines "SK_DEBUG"
+buildoptions "/MDd"
 symbols "On"
 
 filter "configurations:Release"
 defines "SK_RELEASE"
+buildoptions "/MD"
 optimize "On"
 
 filter "configurations:Dist"
 defines "SK_DIST"
+buildoptions "/MD"
 optimize "On"
 
 -- pentru viitor
---filters {"system:windows", "configurations:Release"}
---buildoptions "/MT"
+-- filters {"system:windows", "configurations:Release"}
+-- buildoptions "/MT"
 
 project "Sandbox"
 location "Sandbox"
@@ -113,12 +118,15 @@ defines
 
 filter "configurations:Debug"
 defines "SK_DEBUG"
+buildoptions "/MDd"
 symbols "On"
 
 filter "configurations:Release"
 defines "SK_RELEASE"
+buildoptions "/MD"
 optimize "On"
 
 filter "configurations:Dist"
 defines "SK_DIST"
+buildoptions "/MD"
 optimize "On"

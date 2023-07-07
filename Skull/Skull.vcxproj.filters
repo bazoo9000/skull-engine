@@ -34,9 +34,6 @@
     <ClInclude Include="src\Skull\Events\KeyEvent.h">
       <Filter>Skull\Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\Skull\Events\MouseEvent.h">
-      <Filter>Skull\Events</Filter>
-    </ClInclude>
     <ClInclude Include="src\Skull\Log.h">
       <Filter>Skull</Filter>
     </ClInclude>
@@ -45,6 +42,15 @@
       <Filter>Skull\Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\Skull\Window.h">
+      <Filter>Skull</Filter>
+    </ClInclude>
+    <ClInclude Include="LayerStack.h">
+      <Filter>Skull</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Skull\Events\MouseEvent.h">
+      <Filter>Skull\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Layer.h">
       <Filter>Skull</Filter>
     </ClInclude>
   </ItemGroup>
@@ -58,6 +64,12 @@
     <ClCompile Include="src\skpch.cpp" />
     <ClCompile Include="src\Skull\Platform\Windows\WindowsWindow.cpp">
       <Filter>Skull\Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Layer.cpp">
+      <Filter>Skull</Filter>
+    </ClCompile>
+    <ClCompile Include="LayerStack.cpp">
+      <Filter>Skull</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

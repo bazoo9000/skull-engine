@@ -46,8 +46,7 @@ namespace Skull {
 			return GetCategoryFlags() & category;
 		}
 
-	protected:
-		bool m_Handled = false; // daca eventul a avut loc SI a fost executat ce era de executat sau mai bine zis HAS BEEN HANDLED
+		bool Handled = false; // daca eventul a avut loc SI a fost executat ce era de executat sau mai bine zis HAS BEEN HANDLED
 	};
 
 	class EventDispatcher {
@@ -61,7 +60,7 @@ namespace Skull {
 		template<typename T>
 		bool Dispatch(EventFn<T> func) {
 			if (m_Event.GetEventType() == T::GetStaticType()) {
-				m_Event.m_Handled = func(*(T*)&m_Event);
+				m_Event.Handled = func(*(T*)&m_Event);
 				return true;
 			}
 			return false;
