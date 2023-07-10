@@ -36,6 +36,10 @@ namespace Skull {
 		friend class EventDispatcher;
 
 	public:
+		//virtual ~Event() = default;
+
+		bool Handled = false; // daca eventul a avut loc SI a fost executat ce era de executat sau mai bine zis HAS BEEN HANDLED
+
 		// trebuie implementate mai tarziu
 		virtual EventType GetEventType() const = 0;
 		virtual const char* GetName() const = 0; // for debug purpose
@@ -45,8 +49,6 @@ namespace Skull {
 		inline bool IsInCategory(EventCategory category) {
 			return GetCategoryFlags() & category;
 		}
-
-		bool Handled = false; // daca eventul a avut loc SI a fost executat ce era de executat sau mai bine zis HAS BEEN HANDLED
 	};
 
 	class EventDispatcher {

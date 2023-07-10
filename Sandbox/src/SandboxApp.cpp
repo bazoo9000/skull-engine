@@ -11,7 +11,7 @@ public:
 	}
 
 	void OnEvent(Skull::Event& event) override {
-		SK_TRACE("{0}", event);
+		// SK_TRACE("{0}", event); // ERROR: probabil se sterge aiurea, are o problema dupa ToString()
 	}
 };
 
