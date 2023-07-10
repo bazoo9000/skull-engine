@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Skull/Window.h" // ii un window
+
 #include <GLFW/glfw3.h> // sa desenam said window pe ecran
 
 namespace Skull {

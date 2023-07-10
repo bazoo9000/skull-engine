@@ -8,10 +8,10 @@
       <UniqueIdentifier>{7448D969-60AB-680E-0931-A1C4F5723491}</UniqueIdentifier>
     </Filter>
     <Filter Include="Skull\Platform">
-      <UniqueIdentifier>{307562cf-b308-4189-b436-e5ce46dc890c}</UniqueIdentifier>
+      <UniqueIdentifier>{E43C6B61-D00A-5F67-B99E-CF8DA50B3BCC}</UniqueIdentifier>
     </Filter>
     <Filter Include="Skull\Platform\Windows">
-      <UniqueIdentifier>{698ebe61-e179-4899-a0fa-876c1b51fba4}</UniqueIdentifier>
+      <UniqueIdentifier>{1E8BC90B-0A85-F25D-F3F1-886EDF8A58CA}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -34,36 +34,29 @@
     <ClInclude Include="src\Skull\Events\KeyEvent.h">
       <Filter>Skull\Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\Skull\Log.h">
-      <Filter>Skull</Filter>
-    </ClInclude>
-    <ClInclude Include="src\skpch.h" />
-    <ClInclude Include="src\Skull\Platform\Windows\WindowsWindow.h">
-      <Filter>Skull\Platform\Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Skull\Window.h">
-      <Filter>Skull</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Skull\LayerStack.h">
-      <Filter>Skull</Filter>
-    </ClInclude>
     <ClInclude Include="src\Skull\Events\MouseEvent.h">
       <Filter>Skull\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Skull\Layer.h">
       <Filter>Skull</Filter>
     </ClInclude>
+    <ClInclude Include="src\Skull\LayerStack.h">
+      <Filter>Skull</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Skull\Log.h">
+      <Filter>Skull</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Skull\Platform\Windows\WindowsWindow.h">
+      <Filter>Skull\Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Skull\Window.h">
+      <Filter>Skull</Filter>
+    </ClInclude>
+    <ClInclude Include="src\skpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Skull\Application.cpp">
       <Filter>Skull</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Skull\Log.cpp">
-      <Filter>Skull</Filter>
-    </ClCompile>
-    <ClCompile Include="src\skpch.cpp" />
-    <ClCompile Include="src\Skull\Platform\Windows\WindowsWindow.cpp">
-      <Filter>Skull\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Skull\Layer.cpp">
       <Filter>Skull</Filter>
@@ -71,5 +64,12 @@
     <ClCompile Include="src\Skull\LayerStack.cpp">
       <Filter>Skull</Filter>
     </ClCompile>
+    <ClCompile Include="src\Skull\Log.cpp">
+      <Filter>Skull</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Skull\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Skull\Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\skpch.cpp" />
   </ItemGroup>
 </Project>

@@ -12,7 +12,9 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}" -- pentru compat
 
 IncludeDir = {}                                                 -- o sa avem mai multe dependecy-uri, asa ca o sa facem o lista pt toate
 IncludeDir["GLFW"] = "Skull/vendor/GLFW/include"
-include "Skull/vendor/GLFW"                                     -- acum includem toate librariile din GLFW
+IncludeDir["Glad"] = "Skull/vendor/Glad/include"
+include "Skull/vendor/GLFW" -- acum includem toate librariile din GLFW
+include "Skull/vendor/Glad"
 
 project "Skull"
 location "Skull"
@@ -35,12 +37,14 @@ includedirs
 {
 	"%{prj.name}/src",
 	"%{prj.name}/vendor/spdlog/include",
-	"%{IncludeDir.GLFW}"
+	"%{IncludeDir.GLFW}",
+	"%{IncludeDir.Glad}"
 }
 
 links -- link the shit out of them
 {
 	"GLFW",
+	"Glad",
 	"opengl32.lib"
 }
 
@@ -52,7 +56,8 @@ systemversion "latest"
 defines
 {
 	"SK_PLATFORM_WINDOWS",
-	"SK_BUILD_DLL"
+	"SK_BUILD_DLL",
+	"GLFW_INCLUDE_NONE"
 }
 
 postbuildcommands -- ca sa nu mai copiez dll in sandbox
