@@ -13,8 +13,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}" -- pentru compat
 IncludeDir = {}                                                 -- o sa avem mai multe dependecy-uri, asa ca o sa facem o lista pt toate
 IncludeDir["GLFW"] = "Skull/vendor/GLFW/include"
 IncludeDir["Glad"] = "Skull/vendor/Glad/include"
+IncludeDir["ImGui"] = "Skull/vendor/imgui"
 include "Skull/vendor/GLFW" -- acum includem toate librariile din GLFW
 include "Skull/vendor/Glad"
+include "Skull/vendor/imgui"
 
 project "Skull"
 location "Skull"
@@ -38,13 +40,15 @@ includedirs
 	"%{prj.name}/src",
 	"%{prj.name}/vendor/spdlog/include",
 	"%{IncludeDir.GLFW}",
-	"%{IncludeDir.Glad}"
+	"%{IncludeDir.Glad}",
+	"%{IncludeDir.ImGui}"
 }
 
 links -- link the shit out of them
 {
 	"GLFW",
 	"Glad",
+	"ImGui",
 	"opengl32.lib"
 }
 

@@ -7,3 +7,6 @@
 [submodule "Skull/vendor/GLFW"]
 	path = Skull/vendor/GLFW
 	url = https://github.com/TheCherno/GLFW
+[submodule "Skull/vendor/imgui"]
+	path = Skull/vendor/imgui
+	url = https://github.com/TheCherno/imgui

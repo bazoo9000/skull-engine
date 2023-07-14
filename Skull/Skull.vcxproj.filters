@@ -1,20 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\OpenGL">
+      <UniqueIdentifier>{1E7D2C1D-8A08-9AE1-9319-1DD6FF23F6E1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Skull">
       <UniqueIdentifier>{909E190E-FCB2-41BF-C534-E51E31083EF0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Skull\Events">
       <UniqueIdentifier>{7448D969-60AB-680E-0931-A1C4F5723491}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Skull\Platform">
-      <UniqueIdentifier>{E43C6B61-D00A-5F67-B99E-CF8DA50B3BCC}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Skull\Platform\Windows">
-      <UniqueIdentifier>{1E8BC90B-0A85-F25D-F3F1-886EDF8A58CA}</UniqueIdentifier>
+    <Filter Include="Skull\ImGui">
+      <UniqueIdentifier>{BABF22AE-2675-9BA3-AF69-957A1B1E92A7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="src\Skull.h" />
     <ClInclude Include="src\Skull\Application.h">
       <Filter>Skull</Filter>
@@ -37,6 +49,9 @@
     <ClInclude Include="src\Skull\Events\MouseEvent.h">
       <Filter>Skull\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Skull\ImGui\ImGuiLayer.h">
+      <Filter>Skull\ImGui</Filter>
+    </ClInclude>
     <ClInclude Include="src\Skull\Layer.h">
       <Filter>Skull</Filter>
     </ClInclude>
@@ -46,17 +61,23 @@
     <ClInclude Include="src\Skull\Log.h">
       <Filter>Skull</Filter>
     </ClInclude>
-    <ClInclude Include="src\Skull\Platform\Windows\WindowsWindow.h">
-      <Filter>Skull\Platform\Windows</Filter>
-    </ClInclude>
     <ClInclude Include="src\Skull\Window.h">
       <Filter>Skull</Filter>
     </ClInclude>
     <ClInclude Include="src\skpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
+      <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
     <ClCompile Include="src\Skull\Application.cpp">
       <Filter>Skull</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Skull\ImGui\ImGuiLayer.cpp">
+      <Filter>Skull\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\Skull\Layer.cpp">
       <Filter>Skull</Filter>
@@ -66,9 +87,6 @@
     </ClCompile>
     <ClCompile Include="src\Skull\Log.cpp">
       <Filter>Skull</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Skull\Platform\Windows\WindowsWindow.cpp">
-      <Filter>Skull\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\skpch.cpp" />
   </ItemGroup>

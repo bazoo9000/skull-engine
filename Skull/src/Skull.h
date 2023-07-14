@@ -8,6 +8,8 @@
 #include "Skull/Layer.h"
 #include "Skull/Log.h"
 
+#include "Skull/ImGui/ImGuiLayer.h"
+
 // ---Entry Point---
 #include "Skull/EntryPoint.h"
 // -----------------
