@@ -13,7 +13,7 @@ namespace Skull {
 		None = 0,
 		WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved, // the classic window management
 		AppTick, AppUpdate, AppRender,										  // maybe delete later
-		KeyPressed, KeyReleased,											  // tastatura
+		KeyPressed, KeyReleased, KeyTyped,									  // tastatura
 		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled	  // mouse
 	};
 
