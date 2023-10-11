@@ -15,6 +15,7 @@ IncludeDir = {}                                                 -- o sa avem mai
 IncludeDir["GLFW"] = "Skull/vendor/GLFW/include"
 IncludeDir["Glad"] = "Skull/vendor/Glad/include"
 IncludeDir["ImGui"] = "Skull/vendor/imgui"
+IncludeDir["glm"] = "Skull/vendor/glm"
 
 group "Dependencies"
 include "Skull/vendor/GLFW" -- acum includem toate librariile din GLFW
@@ -37,7 +38,9 @@ pchsource "Skull/src/skpch.cpp" -- probabil ignorat in alte OS-uri si este echiv
 files
 {
 	"%{prj.name}/src/**.h", -- ** = sa caute recursiv in folder fisiere cu .h
-	"%{prj.name}/src/**.cpp" -- ** = sa caute recursiv in folder fisiere cu .cpp
+	"%{prj.name}/src/**.cpp", -- ** = sa caute recursiv in folder fisiere cu .cpp
+	"%{prj.name}/vendor/glm/glm/**.hpp",
+	"%{prj.name}/vendor/glm/glm/**.inl"
 }
 
 includedirs
@@ -46,7 +49,8 @@ includedirs
 	"%{prj.name}/vendor/spdlog/include",
 	"%{IncludeDir.GLFW}",
 	"%{IncludeDir.Glad}",
-	"%{IncludeDir.ImGui}"
+	"%{IncludeDir.ImGui}",
+	"%{IncludeDir.glm}"
 }
 
 links -- link the shit out of them
@@ -112,7 +116,8 @@ files
 includedirs
 {
 	"Skull/vendor/spdlog/include",
-	"Skull/src"
+	"Skull/src",
+	"%{IncludeDir.glm}"
 }
 
 links -- dll
