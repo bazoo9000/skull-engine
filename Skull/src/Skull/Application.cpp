@@ -5,6 +5,8 @@
 
 #include <glad/glad.h>
 
+#include "Input.h"
+
 namespace Skull {
 
 #define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
@@ -61,6 +63,10 @@ namespace Skull {
 			for (Layer* layer : m_LayerStack) {
 				layer->OnUpdate();
 			}
+
+			// test, works
+			auto [x, y] = Input::GetMousePosition();
+			SK_CORE_TRACE("{0}, {1}", x, y);
 
 			m_Window->OnUpdate();
 		}
