@@ -3,9 +3,12 @@
 
 #include "imgui.h"
 #include "Platform/OpenGL/ImGuiOpenGLRenderer.h"
-#include "GLFW/glfw3.h"
 
 #include "Skull/Application.h"
+
+// REMOVE THIS LATER
+#include "GLFW/glfw3.h"
+#include "glad/glad.h"
 
 namespace Skull {
 
@@ -160,7 +163,7 @@ namespace Skull {
 
 		io.DisplaySize = ImVec2(e.GetWidth(), e.GetHeight());
 		io.DisplayFramebufferScale = ImVec2(1.0f, 1.0f);
-		//glViewport(0, 0, e.GetWidth(), e.GetHeight());
+		glViewport(0, 0, e.GetWidth(), e.GetHeight()); // REMOVE THIS LATER
 
 		return false;
 	}
