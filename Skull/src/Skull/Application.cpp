@@ -64,10 +64,6 @@ namespace Skull {
 				layer->OnUpdate();
 			}
 
-			// test, works
-			auto [x, y] = Input::GetMousePosition();
-			SK_CORE_TRACE("{0}, {1}", x, y);
-
 			m_Window->OnUpdate();
 		}
 	}

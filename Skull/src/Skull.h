@@ -5,9 +5,12 @@
 // #include <stdio.h> // FOR TESTING
 // #include "Skull/Core.h" // NUSH CE CAUTA ASTA AICI
 #include "Skull/Application.h"
-#include "Skull/Input.h"
 #include "Skull/Layer.h"
 #include "Skull/Log.h"
+
+#include "Skull/Input.h"
+#include "Skull/KeyCodes.h"
+#include "Skull/MouseButtonCodes.h"
 
 #include "Skull/ImGui/ImGuiLayer.h"
 

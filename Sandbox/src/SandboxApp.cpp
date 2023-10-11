@@ -7,11 +7,19 @@ public:
 	}
 
 	void OnUpdate() override{
-		SK_INFO("ExampleLayer::Update");
+		if (Skull::Input::IsKeyPressed(SK_KEY_TAB)) { // key polling
+			SK_TRACE("Tab key pressed! (poll)");
+		}
 	}
 
 	void OnEvent(Skull::Event& event) override {
-		// SK_TRACE("{0}", event); // ERROR: probabil se sterge aiurea, are o problema dupa ToString()
+		if (event.GetEventType() == Skull::EventType::KeyPressed) { // key pressed event
+			Skull::KeyPressedEvent& e = (Skull::KeyPressedEvent&)event;
+			if (Skull::Input::IsKeyPressed(SK_KEY_TAB)) {
+				SK_TRACE("Tab key pressed! (event)");
+			}
+			SK_TRACE("{0}", (char)e.GetKeyCode());
+		}
 	}
 };
 

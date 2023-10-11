@@ -165,9 +165,11 @@
     <ClInclude Include="src\Skull\Events\MouseEvent.h" />
     <ClInclude Include="src\Skull\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Skull\Input.h" />
+    <ClInclude Include="src\Skull\KeyCodes.h" />
     <ClInclude Include="src\Skull\Layer.h" />
     <ClInclude Include="src\Skull\LayerStack.h" />
     <ClInclude Include="src\Skull\Log.h" />
+    <ClInclude Include="src\Skull\MouseButtonCodes.h" />
     <ClInclude Include="src\Skull\Window.h" />
     <ClInclude Include="src\skpch.h" />
   </ItemGroup>
