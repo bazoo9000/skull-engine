@@ -1,5 +1,6 @@
 workspace "Skull"
 architecture "x64"
+startproject "Sandbox"
 
 configurations
 {
@@ -25,6 +26,7 @@ project "Skull"
 location "Skull"
 kind "SharedLib" -- Specifica ca este DLL
 language "C++"
+staticruntime "off"
 
 targetdir("bin/" .. outputdir .. "/%{prj.name}") -- target directory
 objdir("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -57,7 +59,6 @@ links -- link the shit out of them
 
 filter "system:windows" -- macro-uri pentru OS anume
 cppdialect "C++20"
-staticruntime "On"      -- responsabil pentru link-urile statice
 systemversion "latest"
 
 defines
@@ -69,24 +70,24 @@ defines
 
 postbuildcommands -- ca sa nu mai copiez dll in sandbox
 {
-	("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+	("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
 }
 
 -- buildoptions nu era acolo si facea spdlog sa elibereze memorie aiurea, rezultand la crashuri
 -- NOTE: in viitor, daca vreau sa fac dll-uri, ar trebui sa fac buildoptions sa fie cum ii in visual studio la proprietati
 filter "configurations:Debug"
 defines "SK_DEBUG"
-buildoptions "/MDd"
+runtime "Debug"
 symbols "On"
 
 filter "configurations:Release"
 defines "SK_RELEASE"
-buildoptions "/MD"
+runtime "Release"
 optimize "On"
 
 filter "configurations:Dist"
 defines "SK_DIST"
-buildoptions "/MD"
+runtime "Release"
 optimize "On"
 
 -- pentru viitor
@@ -97,6 +98,7 @@ project "Sandbox"
 location "Sandbox"
 kind "ConsoleApp" -- Specifica ca este EXE
 language "C++"
+staticruntime "off"
 
 targetdir("bin/" .. outputdir .. "/%{prj.name}") -- target directory
 objdir("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -120,7 +122,6 @@ links -- dll
 
 filter "system:windows" -- macro-uri pentru OS anume
 cppdialect "C++20"
-staticruntime "On"      -- responsabil pentru link-urile statice
 systemversion "latest"
 
 defines
@@ -130,15 +131,15 @@ defines
 
 filter "configurations:Debug"
 defines "SK_DEBUG"
-buildoptions "/MDd"
+runtime "Debug"
 symbols "On"
 
 filter "configurations:Release"
 defines "SK_RELEASE"
-buildoptions "/MD"
+runtime "Release"
 optimize "On"
 
 filter "configurations:Dist"
 defines "SK_DIST"
-buildoptions "/MD"
+runtime "Release"
 optimize "On"
