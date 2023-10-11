@@ -14,9 +14,12 @@ IncludeDir = {}                                                 -- o sa avem mai
 IncludeDir["GLFW"] = "Skull/vendor/GLFW/include"
 IncludeDir["Glad"] = "Skull/vendor/Glad/include"
 IncludeDir["ImGui"] = "Skull/vendor/imgui"
+
+group "Dependencies"
 include "Skull/vendor/GLFW" -- acum includem toate librariile din GLFW
 include "Skull/vendor/Glad"
 include "Skull/vendor/imgui"
+group ""
 
 project "Skull"
 location "Skull"
