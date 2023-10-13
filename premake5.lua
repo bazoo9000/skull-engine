@@ -117,6 +117,7 @@ includedirs
 {
 	"Skull/vendor/spdlog/include",
 	"Skull/src",
+	"Skull/vendor",
 	"%{IncludeDir.glm}"
 }
 

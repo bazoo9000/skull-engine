@@ -7,6 +7,8 @@
 #include "Skull/Events/Event.h"
 #include "Skull/Events/ApplicationEvent.h"
 
+#include "ImGui/ImGuiLayer.h"
+
 namespace Skull {
 
 	class SKULL_API Application{
@@ -29,6 +31,7 @@ namespace Skull {
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 	private:

@@ -1,4 +1,5 @@
 #include <Skull.h>
+#include "imgui/imgui.h"
 
 class ExampleLayer : public Skull::Layer{
 public:
@@ -28,7 +29,6 @@ class Sandbox : public Skull::Application {
 public:
 	Sandbox() {
 		PushLayer(new ExampleLayer());
-		PushOverlay(new Skull::ImGuiLayer());
 	}
 
 	~Sandbox() {
