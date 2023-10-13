@@ -25,9 +25,10 @@ group ""
 
 project "Skull"
 location "Skull"
-kind "SharedLib" -- Specifica ca este DLL
+kind "StaticLib"
 language "C++"
-staticruntime "off"
+cppdialect "C++20"
+staticruntime "on"
 
 targetdir("bin/" .. outputdir .. "/%{prj.name}") -- target directory
 objdir("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -41,6 +42,11 @@ files
 	"%{prj.name}/src/**.cpp", -- ** = sa caute recursiv in folder fisiere cu .cpp
 	"%{prj.name}/vendor/glm/glm/**.hpp",
 	"%{prj.name}/vendor/glm/glm/**.inl"
+}
+
+defines
+{
+	"_CRT_SECURE_NO_WARNINGS"
 }
 
 includedirs
@@ -62,7 +68,6 @@ links -- link the shit out of them
 }
 
 filter "system:windows" -- macro-uri pentru OS anume
-cppdialect "C++20"
 systemversion "latest"
 
 defines
@@ -72,27 +77,22 @@ defines
 	"GLFW_INCLUDE_NONE"
 }
 
-postbuildcommands -- ca sa nu mai copiez dll in sandbox
-{
-	("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
-}
-
 -- buildoptions nu era acolo si facea spdlog sa elibereze memorie aiurea, rezultand la crashuri
 -- NOTE: in viitor, daca vreau sa fac dll-uri, ar trebui sa fac buildoptions sa fie cum ii in visual studio la proprietati
 filter "configurations:Debug"
 defines "SK_DEBUG"
 runtime "Debug"
-symbols "On"
+symbols "on"
 
 filter "configurations:Release"
 defines "SK_RELEASE"
 runtime "Release"
-optimize "On"
+optimize "on"
 
 filter "configurations:Dist"
 defines "SK_DIST"
 runtime "Release"
-optimize "On"
+optimize "on"
 
 -- pentru viitor
 -- filters {"system:windows", "configurations:Release"}
@@ -102,7 +102,8 @@ project "Sandbox"
 location "Sandbox"
 kind "ConsoleApp" -- Specifica ca este EXE
 language "C++"
-staticruntime "off"
+cppdialect "C++20"
+staticruntime "on"
 
 targetdir("bin/" .. outputdir .. "/%{prj.name}") -- target directory
 objdir("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -127,7 +128,6 @@ links -- dll
 }
 
 filter "system:windows" -- macro-uri pentru OS anume
-cppdialect "C++20"
 systemversion "latest"
 
 defines
@@ -138,14 +138,14 @@ defines
 filter "configurations:Debug"
 defines "SK_DEBUG"
 runtime "Debug"
-symbols "On"
+symbols "on"
 
 filter "configurations:Release"
 defines "SK_RELEASE"
 runtime "Release"
-optimize "On"
+optimize "on"
 
 filter "configurations:Dist"
 defines "SK_DIST"
 runtime "Release"
-optimize "On"
+optimize "on"

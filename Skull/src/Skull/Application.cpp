@@ -30,12 +30,10 @@ namespace Skull {
 
 	void Application::PushLayer(Layer* layer) {
 		m_LayerStack.PushLayer(layer);
-		layer->OnAtach();
 	}
 
 	void Application::PushOverlay(Layer* layer) {
 		m_LayerStack.PushOverlay(layer);
-		layer->OnAtach();
 	}
 
 	void Application::OnEvent(Event& e) {

@@ -13,6 +13,13 @@ public:
 		}
 	}
 
+	virtual void OnImGuiRender() {
+		// THICC linking error
+		/*ImGui::Begin("Test");
+		ImGui::Text("This is a text");
+		ImGui::End();*/
+	}
+
 	void OnEvent(Skull::Event& event) override {
 		if (event.GetEventType() == Skull::EventType::KeyPressed) { // key pressed event
 			Skull::KeyPressedEvent& e = (Skull::KeyPressedEvent&)event;
