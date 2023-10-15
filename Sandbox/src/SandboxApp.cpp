@@ -14,10 +14,10 @@ public:
 	}
 
 	virtual void OnImGuiRender() {
-		// THICC linking error
-		/*ImGui::Begin("Test");
+		// fixed
+		ImGui::Begin("Test");
 		ImGui::Text("This is a text");
-		ImGui::End();*/
+		ImGui::End();
 	}
 
 	void OnEvent(Skull::Event& event) override {

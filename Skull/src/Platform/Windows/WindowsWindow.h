@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Skull/Window.h" // ii un window
+#include "Skull/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h> // sa desenam said window pe ecran
 
@@ -28,6 +29,7 @@ namespace Skull {
 		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		// scopul ei este pentru a il pune in GLFW si eventuri
 		struct WindowData {
