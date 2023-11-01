@@ -28,9 +28,6 @@ namespace Skull {
 		glGenVertexArrays(1, &m_VertexArray);
 		glBindVertexArray(m_VertexArray);
 
-		glGenBuffers(1, &m_VertexBuffer);
-		glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
-
 		// merge de la -1 la 1 pe toate axele! (sau va fi convertit acolo)
 		float vertices[3 * 3] = {
 			-0.5f, -0.5f, 0.0f, // A
@@ -38,18 +35,14 @@ namespace Skull {
 			0.0f, 0.5f, 0.0f    // C
 		};
 
-		// traducere: ducem datele din vertices din CPU in GPU, STATIC_DRAW este desenat doar o data
-		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+		m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
 
 		// asta traduce ce am trimis mai sus in ceva ce intelege GPU-ul
 		glEnableVertexAttribArray(0);
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr); // (index, cate vertex-uri, ce tip is, isNormalized?, cati bytes sunt intre vertex-uri, pointerul sau offset-ul (default ii 0))
 	
-		glGenBuffers(1, &m_IndexBuffer); // sau ElementBuffer
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
-
 		unsigned int indices[3] = { 0, 1, 2 }; // merge si short
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+		m_IndexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 
 		// Behold, a new string trick!
 
@@ -120,9 +113,9 @@ namespace Skull {
 			glClearColor(0.2f, 0.2f, 0.2f, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
 
-			m_Shader->Bind(); // in opengl nu conteaza ordinea la shader, dar la restu da
+			m_Shader->Bind(); // in opengl nu conteaza ordinea la shader, dar la restu da si trebuie Bind sa fie prima chestie
 			glBindVertexArray(m_VertexArray); // already binded, dar nu strica sal apelezi din nou
-			glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr); // draw indices
+			glDrawElements(GL_TRIANGLES, m_IndexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr); // draw indices
 
 			for (Layer* layer : m_LayerStack) {
 				layer->OnUpdate();
