@@ -13,6 +13,26 @@ namespace Skull {
 
 	Application* Application::s_Instance = nullptr;
 
+	// TEMPORAR
+	static GLenum ShaderDataTypeToOpenGLBaseType(ShaderDataType type) {
+		switch (type) {
+			case ShaderDataType::Float:		return GL_FLOAT;
+			case ShaderDataType::Float2:	return GL_FLOAT;
+			case ShaderDataType::Float3:	return GL_FLOAT;
+			case ShaderDataType::Float4:	return GL_FLOAT;
+			case ShaderDataType::Mat3:		return GL_FLOAT;
+			case ShaderDataType::Mat4:		return GL_FLOAT;
+			case ShaderDataType::Int:		return GL_INT;
+			case ShaderDataType::Int2:		return GL_INT;
+			case ShaderDataType::Int3:		return GL_INT;
+			case ShaderDataType::Int4:		return GL_INT;
+			case ShaderDataType::Bool:		return GL_BOOL;
+		}
+
+		SK_CORE_ASSERT(false, "Unknown ShaderDataType!");
+		return 0;
+	}
+
 	Application::Application() {
 		SK_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
@@ -29,18 +49,39 @@ namespace Skull {
 		glBindVertexArray(m_VertexArray);
 
 		// merge de la -1 la 1 pe toate axele! (sau va fi convertit acolo)
-		float vertices[3 * 3] = {
-			-0.5f, -0.5f, 0.0f, // A
-			0.5f, -0.5f, 0.0f,  // B
-			0.0f, 0.5f, 0.0f    // C
+		float vertices[3 * 7] = {
+			-0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, // A + color
+			0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f, 1.0f, // B + color
+			0.0f, 0.5f, 0.0f,	0.0f, 0.0f, 1.0f, 1.0f, // C + color
 		};
 
 		m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
 
-		// asta traduce ce am trimis mai sus in ceva ce intelege GPU-ul
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr); // (index, cate vertex-uri, ce tip is, isNormalized?, cati bytes sunt intre vertex-uri, pointerul sau offset-ul (default ii 0))
-	
+		{
+			BufferLayout layout = {
+				{ ShaderDataType::Float3, "a_Position" },
+				{ ShaderDataType::Float4, "a_Color" },
+			};
+
+			m_VertexBuffer->SetLayout(layout); // destroy right after has been set
+		}
+
+		uint32_t index = 0;
+		const auto& layout = m_VertexBuffer->GetLayout();
+		for (const auto& element : layout) {
+			// asta traduce ce am trimis mai sus in ceva ce intelege GPU-ul
+			glEnableVertexAttribArray(index);
+			glVertexAttribPointer(
+				index, 
+				((BufferElement)element).GetComponentCount(), 
+				ShaderDataTypeToOpenGLBaseType(element.Type), 
+				element.Normalized ? GL_TRUE : GL_FALSE, 
+				layout.GetStride(),
+				(const void*)element.Offset
+			); // (index, cate vertex-uri, ce tip is, isNormalized?, cati bytes sunt intre vertex-uri, pointerul sau offset-ul (default ii 0))
+			index++;
+		}
+
 		unsigned int indices[3] = { 0, 1, 2 }; // merge si short
 		m_IndexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 
@@ -51,11 +92,14 @@ namespace Skull {
 			#version 330 core
 			
 			layout(location = 0) in vec3 a_Position;
+			layout(location = 1) in vec4 a_Color;
 
 			out vec3 v_Position;
+			out vec4 v_Color;
 
 			void main(){
 				v_Position = a_Position;
+				v_Color = a_Color;
 				gl_Position = vec4(a_Position, 1.0);
 			}
 		)";
@@ -67,9 +111,11 @@ namespace Skull {
 			layout(location = 0) out vec4 color;
 
 			in vec3 v_Position;
+			in vec4 v_Color;
 
 			void main(){
 				color = vec4(v_Position * 0.5 + 0.5, 1.0);
+				color = v_Color;
 			}
 		)"; // vec4(r, g, b, a) sau vec4(vec3, a)
 		
