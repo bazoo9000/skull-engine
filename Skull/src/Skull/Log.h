@@ -7,10 +7,10 @@
 #include <spdlog/fmt/ostr.h>
 #pragma warning(pop)
 
-namespace Skull {
-
-	class SKULL_API Log{
-
+namespace Skull 
+{
+	class SKULL_API Log
+	{
 	public:
 		static void Init();
 		inline static std::shared_ptr<spdlog::logger>& GetCoreLogger() { return s_CoreLogger; }

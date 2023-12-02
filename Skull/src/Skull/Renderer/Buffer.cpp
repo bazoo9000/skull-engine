@@ -6,10 +6,12 @@
 
 #include "Skull/Log.h"
 
-namespace Skull {
-
-	VertexBuffer* VertexBuffer::Create(float* vertices, uint32_t size) {
-		switch (Renderer::GetCurrentAPI()) {
+namespace Skull 
+{
+	VertexBuffer* VertexBuffer::Create(float* vertices, uint32_t size) 
+	{
+		switch (Renderer::GetCurrentAPI()) 
+		{
 			case RendererAPI::None:   SK_CORE_ASSERT(false, "RendererAPI::None is not supported yet."); return nullptr;
 			case RendererAPI::OpenGL: return new OpenGLVertexBuffer(vertices, size);
 		}
@@ -18,8 +20,10 @@ namespace Skull {
 		return nullptr;
 	}
 	
-	IndexBuffer* IndexBuffer::Create(uint32_t* indices, uint32_t count) {
-		switch (Renderer::GetCurrentAPI()) {
+	IndexBuffer* IndexBuffer::Create(uint32_t* indices, uint32_t count) 
+	{
+		switch (Renderer::GetCurrentAPI()) 
+		{
 			case RendererAPI::None:   SK_CORE_ASSERT(false, "RendererAPI::None is not supported yet."); return nullptr;
 			case RendererAPI::OpenGL: return new OpenGLIndexBuffer(indices, count);
 		}

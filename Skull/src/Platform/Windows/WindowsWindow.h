@@ -5,10 +5,11 @@
 
 #include <GLFW/glfw3.h> // sa desenam said window pe ecran
 
-namespace Skull {
+namespace Skull 
+{
 
-	class WindowsWindow : public Window {
-
+	class WindowsWindow : public Window 
+	{
 	public:
 		WindowsWindow(const WindowProps&);
 		virtual ~WindowsWindow();
@@ -32,7 +33,8 @@ namespace Skull {
 		GraphicsContext* m_Context;
 
 		// scopul ei este pentru a il pune in GLFW si eventuri
-		struct WindowData {
+		struct WindowData 
+		{
 			std::string Title;
 			unsigned int Width, Height;
 			bool VSync;
@@ -42,4 +44,5 @@ namespace Skull {
 
 		WindowData m_Data;
 	};
+
 }

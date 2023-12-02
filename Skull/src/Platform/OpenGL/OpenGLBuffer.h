@@ -2,9 +2,10 @@
 
 #include "Skull/Renderer/Buffer.h"
 
-namespace Skull{
-
-	class OpenGLVertexBuffer : public VertexBuffer {
+namespace Skull
+{
+	class OpenGLVertexBuffer : public VertexBuffer 
+	{
 	public:
 		OpenGLVertexBuffer(float* vertices, uint32_t size);
 		virtual ~OpenGLVertexBuffer();
@@ -20,7 +21,8 @@ namespace Skull{
 		BufferLayout m_Layout;
 	};
 
-	class OpenGLIndexBuffer : public IndexBuffer {
+	class OpenGLIndexBuffer : public IndexBuffer 
+	{
 	public:
 		OpenGLIndexBuffer(uint32_t* indices, uint32_t count);
 		virtual ~OpenGLIndexBuffer();

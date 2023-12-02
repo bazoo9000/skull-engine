@@ -1,14 +1,16 @@
 #include "skpch.h"
 #include "Layer.h"
 
-namespace Skull {
-
+namespace Skull 
+{
 	Layer::Layer(const std::string& debugName)
-		: m_DebugName(debugName){
+		: m_DebugName(debugName)
+	{
 		// nimic, doar ii dam numele
 	}
 
-	Layer::~Layer() {
+	Layer::~Layer() 
+	{
 		// nimic
 	}
 }

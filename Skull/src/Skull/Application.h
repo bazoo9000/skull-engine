@@ -12,10 +12,10 @@
 #include "Renderer/Shader.h" // testing, delete later
 #include "Renderer/Buffer.h"
 
-namespace Skull {
-
-	class SKULL_API Application{
-
+namespace Skull 
+{
+	class SKULL_API Application
+	{
 	public:
 		Application();
 		virtual ~Application(); // punem virtual pt momentul cand punem in Sandbox ce-i aici
@@ -30,6 +30,7 @@ namespace Skull {
 		inline Window& GetWindow() { return *m_Window; }
 
 		inline static Application& Get() { return *s_Instance; }
+	
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 
@@ -42,6 +43,7 @@ namespace Skull {
 		std::unique_ptr<Shader> m_Shader;
 		std::unique_ptr<VertexBuffer> m_VertexBuffer;
 		std::unique_ptr<IndexBuffer> m_IndexBuffer;
+	
 	private:
 		static Application* s_Instance;
 	};

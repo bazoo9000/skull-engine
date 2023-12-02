@@ -12,9 +12,10 @@ dar ar lua mult timp, asa ca o sal copiem :) (temporar).
 opengl3 mai exact, neo facut toata treba.
 */
 
-namespace Skull {
-
-	class SKULL_API ImGuiLayer : public Layer {
+namespace Skull 
+{
+	class SKULL_API ImGuiLayer : public Layer 
+	{
 	public:
 		ImGuiLayer();
 		~ImGuiLayer();

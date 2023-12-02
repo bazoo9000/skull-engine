@@ -4,9 +4,10 @@
 
 // putem face 2 headere pt buffere, dar prefer sa ramana asa
 // este PUR VIRTUAL
-namespace Skull {
-
-	enum class ShaderDataType {
+namespace Skull 
+{
+	enum class ShaderDataType 
+	{
 		None = 0, 
 		Float, Float2, Float3, Float4,
 		Mat3, Mat4,
@@ -14,8 +15,9 @@ namespace Skull {
 		Bool
 	};
 
-	static uint32_t ShaderDataTypeSize(ShaderDataType type) {
-		switch (type)					// return no_bytes * how_many
+	static uint32_t ShaderDataTypeSize(ShaderDataType type) 
+	{
+		switch (type)					 // return no_bytes * how_many
 		{
 			case ShaderDataType::Float:		return 4;
 			case ShaderDataType::Float2:	return 4 * 2;
@@ -34,7 +36,8 @@ namespace Skull {
 		return 0;
 	}
 
-	struct BufferElement {
+	struct BufferElement 
+	{
 		std::string Name;
 		ShaderDataType Type;
 		uint32_t Size;
@@ -46,8 +49,10 @@ namespace Skull {
 		BufferElement(ShaderDataType type, const std::string& name, bool normalized = false)
 			:Name(name), Type(type), Size(ShaderDataTypeSize(type)), Offset(0), Normalized(normalized) {}
 
-		uint32_t GetComponentCount() {
-			switch (Type) {						// return how_many_components_in_type
+		uint32_t GetComponentCount() 
+		{
+			switch (Type)					 // return how_many_components_in_type
+			{						
 				case ShaderDataType::Float:		return 1;
 				case ShaderDataType::Float2:	return 2;
 				case ShaderDataType::Float3:	return 3;
@@ -66,7 +71,8 @@ namespace Skull {
 		}
 	};
 
-	class BufferLayout {
+	class BufferLayout 
+	{
 	public:
 		BufferLayout() {}
 
@@ -85,11 +91,13 @@ namespace Skull {
 		std::vector<BufferElement>::const_iterator end() const { return m_Elements.end(); }
 
 	private:
-		void CalculateOffsetAndStride() {
+		void CalculateOffsetAndStride()
+		{
 			uint32_t offset = 0;
 			m_Stride = 0;
 
-			for (auto& element : m_Elements) {
+			for (auto& element : m_Elements) 
+			{
 				element.Offset = offset;
 				offset += element.Size;
 				m_Stride += element.Size;
@@ -101,7 +109,8 @@ namespace Skull {
 		uint32_t m_Stride = 0;
 	};
 
-	class VertexBuffer {
+	class VertexBuffer 
+	{
 	public:
 		virtual ~VertexBuffer() {}
 
@@ -114,7 +123,8 @@ namespace Skull {
 		static VertexBuffer* Create(float* vertices, uint32_t size);
 	};
 
-	class IndexBuffer {
+	class IndexBuffer 
+	{
 	public:
 		virtual ~IndexBuffer() {}
 

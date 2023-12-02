@@ -2,10 +2,10 @@
 
 #include "Event.h"
 
-namespace Skull {
-
-	class SKULL_API MouseMovedEvent : public Event {
-
+namespace Skull 
+{
+	class SKULL_API MouseMovedEvent : public Event 
+	{
 	public:
 		MouseMovedEvent(float x, float y)
 			: m_MouseX(x), m_MouseY(y) {}
@@ -13,7 +13,8 @@ namespace Skull {
 		inline float GetX() const { return m_MouseX; }
 		inline float GetY() const { return m_MouseY; }
 
-		std::string ToString() const override{
+		std::string ToString() const override
+		{
 			std::stringstream ss;
 			ss << "MouseMovedEvent: " << m_MouseX << ", " << m_MouseY;
 			return ss.str();
@@ -25,8 +26,8 @@ namespace Skull {
 		float m_MouseX, m_MouseY;
 	};
 
-	class SKULL_API MouseScrolledEvent : public Event {
-
+	class SKULL_API MouseScrolledEvent : public Event 
+	{
 	public:
 		MouseScrolledEvent(float offsetX, float offsetY)
 			: m_XOffset(offsetX), m_YOffset(offsetY) {}
@@ -34,7 +35,8 @@ namespace Skull {
 		inline float GetXOffset() const { return m_XOffset; }
 		inline float GetYOffset() const { return m_YOffset; }
 
-		std::string ToString() const override {
+		std::string ToString() const override 
+		{
 			std::stringstream ss;
 			ss << "MouseScrolledEvent: " << GetXOffset() << ", " << GetYOffset();
 			return ss.str();
@@ -46,8 +48,8 @@ namespace Skull {
 		float m_XOffset, m_YOffset;
 	};
 
-	class SKULL_API MouseButtonEvent : public Event {
-
+	class SKULL_API MouseButtonEvent : public Event 
+	{
 	public:
 		inline int GetMouseButton() const { return m_Button; }
 
@@ -60,13 +62,14 @@ namespace Skull {
 		int m_Button;
 	};
 
-	class SKULL_API MouseButtonPressedEvent : public MouseButtonEvent {
-
+	class SKULL_API MouseButtonPressedEvent : public MouseButtonEvent 
+	{
 	public:
 		MouseButtonPressedEvent(int button)
 			: MouseButtonEvent(button){}
 
-		std::string ToString() const override {
+		std::string ToString() const override 
+		{
 			std::stringstream ss;
 			ss << "MouseButtonPressedEvent: " << m_Button;
 			return ss.str();
@@ -75,13 +78,14 @@ namespace Skull {
 		EVENT_CLASS_TYPE(MouseButtonPressed)
 	};
 
-	class SKULL_API MouseButtonReleasedEvent : public MouseButtonEvent {
-
+	class SKULL_API MouseButtonReleasedEvent : public MouseButtonEvent
+	{
 	public:
 		MouseButtonReleasedEvent(int button)
 			: MouseButtonEvent(button) {}
 
-		std::string ToString() const override {
+		std::string ToString() const override 
+		{
 			std::stringstream ss;
 			ss << "MouseButtonReleasedEvent: " << m_Button;
 			return ss.str();

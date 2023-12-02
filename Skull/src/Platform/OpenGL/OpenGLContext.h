@@ -4,9 +4,10 @@
 
 struct GLFWwindow;
 
-namespace Skull {
-
-	class OpenGLContext : public GraphicsContext {
+namespace Skull 
+{
+	class OpenGLContext : public GraphicsContext 
+	{
 	public:
 		OpenGLContext(GLFWwindow* windowHandle);
 
@@ -15,5 +16,4 @@ namespace Skull {
 	private:
 		GLFWwindow* m_WindowHandle;
 	};
-
 }

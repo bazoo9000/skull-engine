@@ -11,17 +11,20 @@
 #include <GLFW/glfw3.h> 
 #include <glad/glad.h>
 
-namespace Skull {
-
-	ImGuiLayer::ImGuiLayer() : Layer("ImGuiLayer") {
+namespace Skull 
+{
+	ImGuiLayer::ImGuiLayer() : Layer("ImGuiLayer") 
+	{
 		// nimic
 	}
 
-	ImGuiLayer::~ImGuiLayer() {
+	ImGuiLayer::~ImGuiLayer()
+	{
 		// nimic
 	}
 
-	void ImGuiLayer::OnAtach() {
+	void ImGuiLayer::OnAtach() 
+	{
 		// Furat dintrun example (opengl3)
 		
 		// Setup Dear ImGui context
@@ -55,19 +58,22 @@ namespace Skull {
 		ImGui_ImplOpenGL3_Init("#version 410");
 	}
 
-	void ImGuiLayer::OnDetach() {
+	void ImGuiLayer::OnDetach() 
+	{
 		ImGui_ImplOpenGL3_Shutdown();
 		ImGui_ImplGlfw_Shutdown();
 		ImGui::DestroyContext();
 	}
 
-	void ImGuiLayer::Begin() {
+	void ImGuiLayer::Begin()
+	{
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
 	}
 
-	void ImGuiLayer::End() {
+	void ImGuiLayer::End()
+	{
 		ImGuiIO& io = ImGui::GetIO();
 		Application& app = Application::Get();
 		io.DisplaySize = ImVec2((float)app.GetWindow().GetWidth(), (float)app.GetWindow().GetHeight());
@@ -76,7 +82,8 @@ namespace Skull {
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
-		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable) {
+		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
+		{
 			GLFWwindow* backup_current_context = glfwGetCurrentContext();
 			ImGui::UpdatePlatformWindows();
 			ImGui::RenderPlatformWindowsDefault();
@@ -84,7 +91,8 @@ namespace Skull {
 		}
 	}
 
-	void ImGuiLayer::OnImGuiRender() { // intre Begin() si End()
+	void ImGuiLayer::OnImGuiRender() // intre Begin() si End()
+	{ 
 		static bool show = true;
 		ImGui::ShowDemoWindow(&show);
 	}

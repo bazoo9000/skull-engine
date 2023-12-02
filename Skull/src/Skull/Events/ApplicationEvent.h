@@ -2,10 +2,10 @@
 
 #include "Event.h"
 
-namespace Skull {
-
-	class SKULL_API WindowResizeEvent : public Event{
-
+namespace Skull 
+{
+	class SKULL_API WindowResizeEvent : public Event
+	{
 	public:
 		WindowResizeEvent(unsigned int width, unsigned int height)
 			: m_Width(width), m_Height(height) {}
@@ -13,7 +13,8 @@ namespace Skull {
 		inline unsigned int GetWidth() const { return m_Width; }
 		inline unsigned int GetHeight() const { return m_Height; }
 
-		std::string ToString() const override {
+		std::string ToString() const override 
+		{
 			std::stringstream ss;
 			ss << "WindowResizeEvent: " << m_Width << ", " << m_Height;
 			return ss.str();
@@ -25,8 +26,8 @@ namespace Skull {
 		unsigned int m_Width, m_Height;
 	};
 
-	class SKULL_API WindowCloseEvent : public Event {
-
+	class SKULL_API WindowCloseEvent : public Event 
+	{
 	public:
 		WindowCloseEvent() {}
 
@@ -35,8 +36,8 @@ namespace Skull {
 	};
 
 	// sar putea sa avem nevoie sa fie apelate mereu, dar le lasam aici, for now
-	class SKULL_API AppTickEvent : public Event {
-
+	class SKULL_API AppTickEvent : public Event 
+	{
 	public:
 		AppTickEvent() {}
 
@@ -44,8 +45,8 @@ namespace Skull {
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
 
-	class SKULL_API AppUpdateEvent : public Event {
-
+	class SKULL_API AppUpdateEvent : public Event 
+	{
 	public:
 		AppUpdateEvent() {}
 
@@ -53,8 +54,8 @@ namespace Skull {
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
 
-	class SKULL_API AppRenderEvent : public Event {
-
+	class SKULL_API AppRenderEvent : public Event
+	{
 	public:
 		AppRenderEvent() {}
 

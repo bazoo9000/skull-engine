@@ -6,9 +6,10 @@
 #include "Skull/Core.h"
 #include "Skull/Events/Event.h"
 
-namespace Skull {
-	
-	struct WindowProps {
+namespace Skull 
+{
+	struct WindowProps 
+	{
 		std::string Title;
 		unsigned int Width;
 		unsigned int Height;
@@ -25,7 +26,8 @@ namespace Skull {
 	// clasa asta este pur virtual
 	// scopul ei este de a fi definita pe fiecare platforma
 	// NOTE: doar desktop, deoarece android este diferit (lol)
-	class SKULL_API Window {
+	class SKULL_API Window 
+	{
 	public:
 		using EventCallbackFn = std::function<void(Event&)>;
 

@@ -4,8 +4,8 @@
 
 extern Skull::Application* Skull::CreateApplication();
 
-int main(int argc, char** argv) {
-	
+int main(int argc, char** argv) 
+{
 	Skull::Log::Init();
 
 	auto app = Skull::CreateApplication();

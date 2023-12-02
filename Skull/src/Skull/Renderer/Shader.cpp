@@ -5,9 +5,10 @@
 
 #include <glad/glad.h>
 
-namespace Skull {
-
-	Shader::Shader(const std::string& vertexSrc, const std::string& fragmentSrc) {
+namespace Skull 
+{
+	Shader::Shader(const std::string& vertexSrc, const std::string& fragmentSrc) 
+	{
 		// Create an empty vertex shader handle
 		GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
 
@@ -116,15 +117,18 @@ namespace Skull {
 		glDetachShader(program, fragmentShader);
 	}
 
-	Shader::~Shader() {
+	Shader::~Shader()
+	{
 		glDeleteProgram(m_RendererID);
 	}
 
-	void Shader::Bind() const {
+	void Shader::Bind() const 
+	{
 		glUseProgram(m_RendererID);
 	}
 
-	void Shader::Unbind() const {
+	void Shader::Unbind() const 
+	{
 		glUseProgram(0);
 	}
 }

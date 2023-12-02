@@ -7,15 +7,17 @@
 
 #include "Input.h"
 
-namespace Skull {
-
+namespace Skull 
+{
 #define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
 
 	Application* Application::s_Instance = nullptr;
 
 	// TEMPORAR
-	static GLenum ShaderDataTypeToOpenGLBaseType(ShaderDataType type) {
-		switch (type) {
+	static GLenum ShaderDataTypeToOpenGLBaseType(ShaderDataType type) 
+	{
+		switch (type) 
+		{
 			case ShaderDataType::Float:		return GL_FLOAT;
 			case ShaderDataType::Float2:	return GL_FLOAT;
 			case ShaderDataType::Float3:	return GL_FLOAT;
@@ -33,7 +35,8 @@ namespace Skull {
 		return 0;
 	}
 
-	Application::Application() {
+	Application::Application() 
+	{
 		SK_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
 
@@ -49,7 +52,8 @@ namespace Skull {
 		glBindVertexArray(m_VertexArray);
 
 		// merge de la -1 la 1 pe toate axele! (sau va fi convertit acolo)
-		float vertices[3 * 7] = {
+		float vertices[3 * 7] = 
+		{
 			-0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, // A + color
 			0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f, 1.0f, // B + color
 			0.0f, 0.5f, 0.0f,	0.0f, 0.0f, 1.0f, 1.0f, // C + color
@@ -58,7 +62,8 @@ namespace Skull {
 		m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
 
 		{
-			BufferLayout layout = {
+			BufferLayout layout = 
+			{
 				{ ShaderDataType::Float3, "a_Position" },
 				{ ShaderDataType::Float4, "a_Color" },
 			};
@@ -68,7 +73,8 @@ namespace Skull {
 
 		uint32_t index = 0;
 		const auto& layout = m_VertexBuffer->GetLayout();
-		for (const auto& element : layout) {
+		for (const auto& element : layout) 
+		{
 			// asta traduce ce am trimis mai sus in ceva ce intelege GPU-ul
 			glEnableVertexAttribArray(index);
 			glVertexAttribPointer(
@@ -122,40 +128,48 @@ namespace Skull {
 		m_Shader.reset(new Shader(vertexSrc, fragmentSrc));
 	}
 
-	Application::~Application() {
+	Application::~Application() 
+	{
 		// nimic
 	}
 
-	void Application::PushLayer(Layer* layer) {
+	void Application::PushLayer(Layer* layer) 
+	{
 		m_LayerStack.PushLayer(layer);
 	}
 
-	void Application::PushOverlay(Layer* layer) {
+	void Application::PushOverlay(Layer* layer)
+	{
 		m_LayerStack.PushOverlay(layer);
 	}
 
-	void Application::OnEvent(Event& e) {
+	void Application::OnEvent(Event& e)
+	{
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose)); // ce se afla in < Aici > este pt T::GetStaticType()
 
 		// SK_CORE_TRACE("{0}", e); // DEBUG, sa vedem ce event a avut loc
 
-		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); ) {
+		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); ) 
+		{
 			(*--it)->OnEvent(e);
-			if (e.Handled) {
+			if (e.Handled) 
+			{
 				break; // daca 
 			}
 		}
 	}
 
-	bool Application::OnWindowClose(WindowCloseEvent& e) {
+	bool Application::OnWindowClose(WindowCloseEvent& e)
+	{
 		m_Running = false; // oprim while-ul din Run()
 		return true; // HANDLED
 	}
 
-	void Application::Run() {
-
-		while (m_Running) {
+	void Application::Run() 
+	{
+		while (m_Running) 
+		{
 			glClearColor(0.2f, 0.2f, 0.2f, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
 
@@ -163,12 +177,14 @@ namespace Skull {
 			glBindVertexArray(m_VertexArray); // already binded, dar nu strica sal apelezi din nou
 			glDrawElements(GL_TRIANGLES, m_IndexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr); // draw indices
 
-			for (Layer* layer : m_LayerStack) {
+			for (Layer* layer : m_LayerStack)
+			{
 				layer->OnUpdate();
 			}
 
 			m_ImGuiLayer->Begin();
-			for (Layer* layer : m_LayerStack) {
+			for (Layer* layer : m_LayerStack) 
+			{
 				layer->OnImGuiRender();
 			}
 			m_ImGuiLayer->End();
