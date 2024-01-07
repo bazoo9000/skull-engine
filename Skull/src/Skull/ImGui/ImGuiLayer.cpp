@@ -18,11 +18,6 @@ namespace Skull
 		// nimic
 	}
 
-	ImGuiLayer::~ImGuiLayer()
-	{
-		// nimic
-	}
-
 	void ImGuiLayer::OnAtach() 
 	{
 		// Furat dintrun example (opengl3)

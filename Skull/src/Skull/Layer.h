@@ -9,7 +9,7 @@ namespace Skull
 	{
 	public:
 		Layer(const std::string& name = "Layer");
-		virtual ~Layer();
+		virtual ~Layer() = default;
 
 		virtual void OnAtach() {}
 		virtual void OnDetach() {}

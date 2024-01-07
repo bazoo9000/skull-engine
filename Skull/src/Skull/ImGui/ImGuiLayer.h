@@ -18,7 +18,7 @@ namespace Skull
 	{
 	public:
 		ImGuiLayer();
-		~ImGuiLayer();
+		~ImGuiLayer() = default;
 
 		virtual void OnAtach() override;
 		virtual void OnDetach() override;

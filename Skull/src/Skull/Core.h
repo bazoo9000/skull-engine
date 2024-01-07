@@ -1,5 +1,7 @@
 #pragma once
 
+//#define SK_ENABLE_ASSERTS
+
 #ifdef SK_PLATFORM_WINDOWS
 	#if SK_DYNAMIC_LINK
 		#ifdef SK_BUILD_DLL

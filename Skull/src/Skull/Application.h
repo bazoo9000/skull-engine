@@ -11,6 +11,7 @@
 
 #include "Renderer/Shader.h" // testing, delete later
 #include "Renderer/Buffer.h"
+#include "Renderer/VertexArray.h"
 
 namespace Skull 
 {
@@ -18,7 +19,7 @@ namespace Skull
 	{
 	public:
 		Application();
-		virtual ~Application(); // punem virtual pt momentul cand punem in Sandbox ce-i aici
+		virtual ~Application() = default; // punem virtual pt momentul cand punem in Sandbox ce-i aici
 
 		void Run();
 
@@ -39,10 +40,12 @@ namespace Skull
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 
-		unsigned int m_VertexArray;
-		std::unique_ptr<Shader> m_Shader;
-		std::unique_ptr<VertexBuffer> m_VertexBuffer;
-		std::unique_ptr<IndexBuffer> m_IndexBuffer;
+		std::shared_ptr<Shader> m_Shader;
+		std::shared_ptr<VertexArray> m_VertexArray;
+
+		// for a square
+		std::shared_ptr<Shader> m_Shader2;
+		std::shared_ptr<VertexArray> m_SquareVA;
 	
 	private:
 		static Application* s_Instance;

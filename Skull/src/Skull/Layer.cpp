@@ -8,9 +8,4 @@ namespace Skull
 	{
 		// nimic, doar ii dam numele
 	}
-
-	Layer::~Layer() 
-	{
-		// nimic
-	}
 }
