@@ -145,6 +145,7 @@
   <ItemGroup>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
@@ -157,6 +158,7 @@
     <ClInclude Include="src\Skull\Events\KeyEvent.h" />
     <ClInclude Include="src\Skull\Events\MouseEvent.h" />
     <ClInclude Include="src\Skull\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Skull\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Skull\Input.h" />
     <ClInclude Include="src\Skull\KeyCodes.h" />
     <ClInclude Include="src\Skull\Layer.h" />
@@ -166,6 +168,7 @@
     <ClInclude Include="src\Skull\Renderer\Buffer.h" />
     <ClInclude Include="src\Skull\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Skull\Renderer\Renderer.h" />
+    <ClInclude Include="src\Skull\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Skull\Renderer\Shader.h" />
     <ClInclude Include="src\Skull\Renderer\VertexArray.h" />
     <ClInclude Include="src\Skull\Window.h" />
@@ -590,6 +593,7 @@
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
@@ -603,7 +607,9 @@
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\Skull\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Skull\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Skull\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Skull\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Skull\Renderer\Shader.cpp" />
     <ClCompile Include="src\Skull\Renderer\VertexArray.cpp" />
   </ItemGroup>

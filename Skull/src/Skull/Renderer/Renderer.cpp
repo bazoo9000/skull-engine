@@ -3,5 +3,19 @@
 
 namespace Skull 
 {
-	RendererAPI Renderer::s_RendererAPI = RendererAPI::OpenGL;
+	void Renderer::BeginScene()
+	{
+		// nimic
+	}
+
+	void Renderer::EndScene()
+	{
+		// nimic
+	}
+
+	void Renderer::Submit(const std::shared_ptr<VertexArray>& vertexArray)
+	{
+		vertexArray->Bind();
+		RenderCommand::DrawIndexed(vertexArray);
+	}
 }

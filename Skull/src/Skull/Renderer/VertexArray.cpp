@@ -10,8 +10,8 @@ namespace Skull
 	{
 		switch (Renderer::GetCurrentAPI())
 		{
-		case RendererAPI::None:   SK_CORE_ASSERT(false, "RendererAPI::None is not supported yet."); return nullptr;
-		case RendererAPI::OpenGL: return new OpenGLVertexArray();
+		case RendererAPI::API::None:   SK_CORE_ASSERT(false, "RendererAPI::None is not supported yet."); return nullptr;
+		case RendererAPI::API::OpenGL: return new OpenGLVertexArray();
 		}
 
 		SK_CORE_ASSERT(false, "Unknown RendererAPI!");

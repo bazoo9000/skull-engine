@@ -3,7 +3,7 @@
 
 #include "Skull/Log.h"
 
-#include <glad/glad.h>
+#include "Renderer/Renderer.h"
 
 #include "Input.h"
 
@@ -171,16 +171,19 @@ namespace Skull
 	{
 		while (m_Running) 
 		{
-			glClearColor(0.2f, 0.2f, 0.2f, 1);
-			glClear(GL_COLOR_BUFFER_BIT);
+			RenderCommand::SetClearColor({0.1f, 0.1f, 0.1f, 1.0f});
+			RenderCommand::Clear();
+
+			Renderer::BeginScene();
 
 			m_Shader2->Bind();
-			m_SquareVA->Bind();
-			glDrawElements(GL_TRIANGLES, m_SquareVA->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+			Renderer::Submit(m_SquareVA);
 
-			m_Shader->Bind(); // in opengl nu conteaza ordinea la shader, dar la restu da si trebuie Bind sa fie prima chestie
-			m_VertexArray->Bind(); // already binded, dar nu strica sal apelezi din nou
-			glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr); // draw indices
+			m_Shader->Bind();
+			Renderer::Submit(m_VertexArray);
+
+			Renderer::EndScene();
+			// Renderer::Flush(); // in case of multi-threading
 
 			for (Layer* layer : m_LayerStack)
 			{

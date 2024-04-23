@@ -12,8 +12,8 @@ namespace Skull
 	{
 		switch (Renderer::GetCurrentAPI()) 
 		{
-			case RendererAPI::None:   SK_CORE_ASSERT(false, "RendererAPI::None is not supported yet."); return nullptr;
-			case RendererAPI::OpenGL: return new OpenGLVertexBuffer(vertices, size);
+			case RendererAPI::API::None:   SK_CORE_ASSERT(false, "RendererAPI::None is not supported yet."); return nullptr;
+			case RendererAPI::API::OpenGL: return new OpenGLVertexBuffer(vertices, size);
 		}
 
 		SK_CORE_ASSERT(false, "Unknown RendererAPI!");
@@ -24,8 +24,8 @@ namespace Skull
 	{
 		switch (Renderer::GetCurrentAPI()) 
 		{
-			case RendererAPI::None:   SK_CORE_ASSERT(false, "RendererAPI::None is not supported yet."); return nullptr;
-			case RendererAPI::OpenGL: return new OpenGLIndexBuffer(indices, count);
+			case RendererAPI::API::None:   SK_CORE_ASSERT(false, "RendererAPI::None is not supported yet."); return nullptr;
+			case RendererAPI::API::OpenGL: return new OpenGLIndexBuffer(indices, count);
 		}
 
 		SK_CORE_ASSERT(false, "Unknown RendererAPI!");
